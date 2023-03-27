@@ -53,12 +53,14 @@ class EditActivity : AppCompatActivity() {
     // 저장버튼 클릭시 데이터 저장 함수
     private fun saveDate(){
         // 코드의 반복을 줄이기 위해 whit()을 쓴다.
-        with( getSharedPreferences("userInformation",Context.MODE_PRIVATE).edit()){
-            putString("name",nameEditText.text.toString())
-            putString("bloodType",getBloodType())
-            putString("emergencyContact",emergencyContactEditText.text.toString())
-            putString("birthDate", birthdateTextView.text.toString())
-            putString("warning",getWarning())
+        // USER_INFORMATION는 Const.kt파일에 선언해놨음
+        // 값을 가져오는게 항상 똑같으니까 미리 상수처리를 한거???
+        with( getSharedPreferences("USER_INFORMATION",Context.MODE_PRIVATE).edit()){
+            putString(NAME,nameEditText.text.toString())
+            putString(BLOOD_TYPE,getBloodType())
+            putString(EMERGENCY_CONTACT,emergencyContactEditText.text.toString())
+            putString(BIRTHDATE, birthdateTextView.text.toString())
+            putString(WARNING,getWarning())
             apply()
         }
         Toast.makeText(this, "저장완료", Toast.LENGTH_SHORT).show()
